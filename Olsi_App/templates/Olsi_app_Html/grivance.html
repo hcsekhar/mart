@@ -1,0 +1,38 @@
+{% extends "base.html" %}
+{% load static %}
+{% block title %}DRY NUTS | Grievance
+{% endblock %}
+{% block content %}
+
+<style>
+
+  .container1 {
+    padding-left: 5%;
+  }
+  .container1 a {
+    color: black;
+    font-weight: bold;
+  }
+
+</style>  
+
+<div class="text-center display-4 mt-5">
+    <h2 class="text-gradient-warning">GRIEVANCE</h2>
+</div>
+
+
+
+
+  <div class="container1">
+     <h4>For Grievance Redressal, write to Mr. Rajendra Prasad</h4>
+     <a href="mailto:grievance.manager@olsi.in">grievance.manager@olsi.in</a>     
+      <br><br>
+     <h4>To understand how to initiate your grievance redressal, <a href="{% url 'Mechanism' %}">Click here</a></h4>
+      <br>
+     <h4>For Nodal Officer, write to Mr. Panja Narasimha</h4>
+     <a href="mailto:nodalofficer@olsi.in">nodalofficer@olsi.in</a>
+  </div>     
+
+
+
+{% endblock %}

@@ -1,0 +1,20 @@
+{% extends "base.html" %}
+{% load static %}
+{% block title %}DRY NUTS | GST Registrationdetails{% endblock  %}
+{% block content %}
+
+<div class="text-center display-4 mt-5">
+    <h2 class="text-gradient-warning">GST Registrationdetails</h2>
+</div>
+
+<div class="wrapper" style="margin: 50px; text-align: center;">
+
+    <img src="{% static 'img/gst.jpg' %}" alt="" style="width: 50%; height: 100%;"/>
+
+    <img src="{% static 'img/gst1.jpg' %}" alt="" style="width: 50%; height: 100%; padding-top: 5%;"/>
+
+    <img src="{% static 'img/gst2.jpg' %}" alt="" style="width: 50%; height: 100%; padding-top: 5%;"/>
+</div>
+
+
+{% endblock %}

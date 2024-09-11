@@ -1,0 +1,145 @@
+{% extends 'base.html' %}
+{% load static %}
+{% block title %}
+  DRY NUTS | Trainings
+{% endblock %}
+{% block content %}
+
+
+<style>
+
+  /* Media query for screens 480px and below */
+  @media only screen and (max-width: 480px) {
+    /* Adjustments for .portfolio-item */
+    .portfolio-item {
+      display: block;
+      margin-bottom: 20px;
+    }
+    /* Adjustments for .product-img */
+    .product-img img {
+      width: 100%;
+      height: auto;
+    }
+    /* Adjustments for .product-info */
+    .product-info {
+      text-align: center;
+    }
+    /* Adjustments for .product-text p */
+    .product-text p {
+      margin-bottom: 5px;
+    }
+    /* Adjustments for .product-price-btn */
+    .product-price-btn {
+      margin-top: 10px;
+    }
+    
+    /* Adjustments for .container */
+    .container {
+      width: 100%;
+      overflow-x: auto;
+    }
+    /* Adjustments for .table */
+    .table {
+      width: 100%;
+    }
+    /* Adjustments for .table thead th and .table tbody td */
+    .table thead th,
+    .table tbody td {
+      white-space: nowrap;
+    }
+    /* Adjustments for .text-wrap */
+    .text-wrap {
+      white-space: normal;
+    }
+  
+    /* Adjustments for .sidebar12 */
+    .sidebar12 {
+      width: 20%; /* Set the width to 20% */
+    }
+    /* Adjustments for .w3-sidebar */
+    .w3-sidebar {
+      width: 100%; /* Occupy full width */
+      border-radius: 0; /* Remove border radius */
+      padding: 10px; /* Adjust padding if needed */
+    }
+  }
+    
+ 
+</style>
+
+<div style="display:flex">
+    <div class="sidebar12 position-sticky" style="margin-top:45px; z-index: 1;">
+        <div class="container d-flex"> 
+          <div style="width:fit-content; padding: 10px; margin-top: -5px; height: 70%; border-radius: 10px;" class="w3-sidebar w3-bar-block bg-light w3-card">
+            <h3>FILTER</h3>
+            <hr />
+            <form action="{% url "trainer" %}" method="GET" style="display:flex;flex-direction:column;gap:1rem">
+              <h5>Trainers</h5>
+                 <select name="category1">
+                    <option value="">All </option>
+                    {% for i in trainers %}
+                    <option value="{{i.slug}}">{{i.name}}</option>
+                    {% endfor %}
+    
+                    <!-- Add options dynamically based on available categories -->
+                </select> 
+                
+                <h5>Trainings</h5>
+                <select name="category3">
+                    <option value="">All </option>
+                    {% for i in trainer_type %}
+                    <option value="{{i.slug}}">{{i.name}}</option>
+                    {% endfor %}
+    
+                    <!-- Add options dynamically based on available categories -->
+                </select>
+                <h5>States</h5>
+                <select name="category2">
+                    <option value="">All </option>
+                    {% for i in state %}
+                    <option value="{{i.slug}}">{{i.name}}</option>
+                    {% endfor %}
+    
+                    <!-- Add options dynamically based on available categories -->
+                </select>
+                <a href=""
+                ><button type="submit" class="btn btn-primary prdt-btn">
+                  Filter
+                </button></a>
+            </form>
+          </div>
+        </div>
+      </div>
+      <div class="container mt-5" style="width: 70%">
+        <table class="table table-hover align-middle">
+          <thead>
+            <tr>
+              <th scope="col" class="text-primary">S.No</th>
+              <th scope="col" class="text-primary">State</th>
+              <th scope="col" class="text-primary">Location</th>
+              <th scope="col" class="text-primary">Date & Time</th>
+              <th scope="col" class="text-primary">Trainings</th>
+              <th scope="col" class="text-primary">Speakers</th>
+              <th scope="col" class="text-primary">Venue</th>
+              <th scope="col" class="text-primary">Address</th>
+            </tr>   
+          </thead>
+          <tbody>
+            {% for j in trainer %}
+            <tr>
+              <th scope="row">{{forloop.counter}}   </th>
+              <td scope="row">{{j.state}}</td>
+              <td scope="row">{{j.location}}</td>
+              <td scope="row" class="text-wrap">{{j.time|date:'d-F-Y H-i-s'}}</td>
+              <td scope="row">{{j.types}}</td>
+              <td scope="row">{{j.name}}</td>
+              <td scope="row">{{j.venue}}</td>
+              <td scope="row">{{j.address}}</td>
+            </tr>
+            {% endfor %}
+          </tbody>
+        </table>
+      </div>
+</div>
+
+{% endblock %}

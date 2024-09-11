@@ -1,0 +1,130 @@
+{% extends "base.html" %}
+{% load static %}
+{% block title %}
+DRY NUTS | Offers
+{% endblock  %}
+{% block content %}
+    
+
+
+<!-- Gallery -->
+<div class="row" style="margin: 50px;">
+    <div class="col-lg-4 mb-4 mb-lg-0">
+        <div class="image-container">
+            <img src="{% static 'images/offer.jpg' %}" class="w-100 shadow-1-strong rounded mb-4" alt="Waves at Sea" />
+            <div class="overlay">
+                {% comment %} <div class="text">Offer's</div> {% endcomment %}
+            </div>
+        </div>
+    </div>
+    <div class="col-lg-4 mb-4 mb-lg-0">
+        <div class="image-container">
+            <img src="{% static 'images/offer1.jpg' %}" class="w-100 shadow-1-strong rounded mb-4" alt="Yosemite National Park" />
+            <div class="overlay">
+                {% comment %} <div class="text">Offer's</div> {% endcomment %}
+            </div>
+        </div>
+    </div>
+    <div class="col-lg-4 mb-4 mb-lg-0">
+        <div class="image-container">
+            <img src="{% static 'images/offer2.jpg' %}" class="w-100 shadow-1-strong rounded mb-4" alt="Waves at Sea" />
+            <div class="overlay">
+                {% comment %} <div class="text">Offer's</div> {% endcomment %}
+            </div>
+        </div>
+    </div>
+    <div class="col-lg-4 mb-4 mb-lg-0">
+        <div class="image-container">
+            <img src="{% static 'images/offer3.jpg' %}" class="w-100 shadow-1-strong rounded mb-4" alt="Yosemite National Park" />
+            <div class="overlay">
+                {% comment %} <div class="text">Offer's</div> {% endcomment %}
+            </div>
+        </div>
+    </div>
+
+    <div class="col-lg-4 mb-4 mb-lg-0">
+        <div class="image-container">
+            <img src="{% static 'images/offer4.jpg' %}" class="w-100 shadow-1-strong rounded mb-4" alt="Waves at Sea" />
+            <div class="overlay">
+                {% comment %} <div class="text">Offer's</div> {% endcomment %}
+            </div>
+        </div>
+    </div>
+    <div class="col-lg-4 mb-4 mb-lg-0">
+        <div class="image-container">
+            <img src="{% static 'images/offer5.jpg' %}" class="w-100 shadow-1-strong rounded mb-4" alt="Yosemite National Park" />
+            <div class="overlay">
+                {% comment %} <div class="text">Offer's</div> {% endcomment %}
+            </div>
+        </div>
+    </div>
+    <div class="col-lg-4 mb-4 mb-lg-0">
+        <div class="image-container">
+            <img src="{% static 'images/offer6.jpg' %}" class="w-100 shadow-1-strong rounded mb-4" alt="Waves at Sea" />
+            <div class="overlay">
+                {% comment %} <div class="text">Offer's</div> {% endcomment %}
+            </div>
+        </div>
+    </div>
+    <div class="col-lg-4 mb-4 mb-lg-0">
+        <div class="image-container">
+            <img src="{% static 'images/offer7.jpg' %}" class="w-100 shadow-1-strong rounded mb-4" alt="Yosemite National Park" />
+            <div class="overlay">
+                {% comment %} <div class="text">Offer's</div> {% endcomment %}
+            </div>
+        </div>
+    </div>
+    <div class="col-lg-4 mb-4 mb-lg-0">
+        <div class="image-container">
+            <img src="{% static 'images/offer8.jpg' %}" class="w-100 shadow-1-strong rounded mb-4" alt="Yosemite National Park" />
+            <div class="overlay">
+                {% comment %} <div class="text">Offer's</div> {% endcomment %}
+            </div>
+        </div>
+    </div>
+
+
+</div>
+<!-- Gallery -->
+
+<style>
+    .image-container {
+        position: relative;
+        overflow: hidden;
+    }
+
+    .image-container img {
+        transition: transform 0.3s ease;
+    }
+
+    .image-container:hover img {
+        transform: scale(1.1);
+    }
+
+    .overlay {
+        position: absolute;
+        top: 0;
+        bottom: 0;
+        left: 0;
+        right: 0;
+        background-color: rgba(0, 0, 0, 0.5);
+        opacity: 0;
+        transition: opacity 0.3s ease;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+    }
+
+    .overlay:hover {
+        opacity: 1;
+    }
+
+    .text {
+        color: white;
+        font-size: 20px;
+        font-weight: bold;
+        text-align: center;
+    }
+</style>
+
+{% endblock %}

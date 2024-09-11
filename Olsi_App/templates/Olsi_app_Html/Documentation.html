@@ -1,0 +1,143 @@
+{% extends 'base.html' %}
+{% load static %}
+{% block title %}
+  DRY NUTS | Documentation
+{% endblock %}
+{% block content %}
+  <style>
+    .container {
+      width: 100%;
+    }
+    
+    table {
+      width: 100%;
+      border-collapse: collapse;
+    }
+    
+    th,
+    td {
+      padding: 8px;
+      text-align: left;
+      border-bottom: 1px solid #ddd;
+    }
+    
+    th {
+      background-color: #f2f2f2;
+    }
+    
+    @media (max-width: 480px) {
+      th,
+      td {
+        padding: 4px;
+        font-size: 12px;
+      }
+    }
+  </style>
+
+  <div class="container mt-5" style="width: 100%">
+    <table class="table table-hover align-middle">
+      <thead>
+        <tr>
+          <th scope="col" class="text-primary">Sl.No</th>
+          <th scope="col" class="text-primary">Name of Certificate</th>
+          <th scope="col" class="text-primary">View</th>
+          <th scope="col" class="text-primary">Download</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr>
+          <th scope="row">1</th>
+          <td scope="row">MCA</td>
+          <td scope="row">
+            <a href="{% static 'doc/MCA.pdf' %}" target="_blank">View</a>
+          </td>
+          <td scope="row">
+            <a href="{% static 'doc/MCA.pdf' %}" download="MCA">Download</a>
+          </td>
+        </tr>
+        <tr>
+          <th scope="row">2</th>
+          <td>Articles of Association</td>
+          <td scope="row">
+            <a href="{% static 'doc/AOA.pdf' %}" target="_blank">View</a>
+          </td>
+          <td scope="row">
+            <a href="{% static 'doc/AOA.pdf' %}" download="MCA">Download</a>
+          </td>
+        </tr>
+        <tr>
+          <th scope="row">3</th>
+          <td scope="row">Fssai food licence</td>
+          <td scope="row">
+            <a href="{% static 'doc/Fssai food licence.pdf' %}" target="_blank">View</a>
+          </td>
+          <td scope="row">
+            <a href="{% static 'doc/Fssai food licence.pdf' %}" download="MCA">Download</a>
+          </td>
+        </tr>
+        <tr>
+          <th scope="row">4</th>
+          <td scope="row">Importer-Exporter Certificate</td>
+          <td scope="row">
+            <a href="{% static 'doc/Importer-Exporter certificate.pdf' %}" target="_blank">View</a>
+          </td>
+          <td scope="row">
+            <a href="{% static 'doc/Importer-Exporter certificate.pdf' %}" download="MCA">Download</a>
+          </td>
+        </tr>
+        <tr>
+          <th scope="row">5</th>
+          <td scope="row">Memorandum of Association</td>
+          <td scope="row">
+            <a href="{% static 'doc/MOA.pdf' %}" target="_blank">View</a>
+          </td>
+          <td scope="row">
+            <a href="{% static 'doc/MOA.pdf' %}" download="MCA">Download</a>
+          </td>
+        </tr>
+        <tr>
+          <th scope="row">6</th>
+          <td scope="row">DRY NUTS GST Certificate</td>
+          <td scope="row">
+            <a href="{% static 'doc/OLSI GST Certificate.pdf' %}" target="_blank">View</a>
+          </td>
+          <td scope="row">
+            <a href="{% static 'doc/OLSI GST Certificate.pdf' %}" download="MCA">Download</a>
+          </td>
+        </tr>
+        <tr>
+          <th scope="row">7</th>
+          <td scope="row">PAN - DRY NUTS</td>
+          <td scope="row">
+            <a href="{% static 'doc/PAN - OLSI.pdf' %}" target="_blank">View</a>
+          </td>
+          <td scope="row">
+            <a href="{% static 'doc/PAN - OLSI.pdf' %}" download="MCA">Download</a>
+          </td>
+        </tr>
+        <tr>
+          <th scope="row">8</th>
+          <td scope="row">TAN</td>
+          <td scope="row">
+            <a href="{% static 'doc/TAN.pdf' %}" target="_blank">View</a>
+          </td>
+          <td scope="row">
+            <a href="{% static 'doc/TAN.pdf' %}" download="MCA">Download</a>
+          </td>
+        </tr>
+        <tr>
+          <th scope="row">9</th>
+          <td scope="row">DECLARATION and NODAL OFFICER</td>
+          <td scope="row">
+            <a href="{% static 'doc/DECLARATION_and_NODAL_OFFICER.pdf' %}" target="_blank">View</a>
+          </td>
+          <td scope="row">
+            <a href="{% static 'doc/DECLARATION_and_NODAL_OFFICER.pdf' %}" download="MCA">Download</a>
+          </td>
+        </tr>
+
+        
+      </tbody>
+    </table>
+  </div>
+{% endblock %}

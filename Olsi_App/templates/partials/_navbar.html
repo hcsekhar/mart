@@ -1,0 +1,343 @@
+{% load static %}
+
+{% comment %} <head>
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.4/css/all.min.css">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/5.3.0/css/bootstrap.min.css">
+</head>   {% endcomment %}
+
+<style>
+  .search-container input[type='text'] {
+    width: 160px;
+    padding: 6px;
+    margin-top: 8px;
+    font-size: 17px;
+    border: none;
+  }
+  
+  .search-container button {
+    float: right;
+    padding: 11px 10px;
+    margin-top: 6px;
+  
+    background: #ddd;
+    font-size: 17px;
+    border: none;
+    cursor: pointer;
+  }
+  .search-container button:hover {
+    background: #ccc;
+  }
+  
+
+  @media only screen and (max-width: 480px) {
+    .py-1 {
+      padding-top: 2.75rem !important;
+      padding-bottom: .25rem !important;
+    }
+    .container-fluid a {
+      padding-top: 5% !important;
+    }
+  }
+
+  @media (max-width: 480px) {
+    .navbar-nav .menu-main {
+        display: flex;
+        flex-direction: column;
+        max-width: 280px;
+        align-items: right; /* Center align items vertically */
+    }
+
+    .navbar-nav .menu-main li {
+        margin-bottom: 10px; /* Add some space between menu items */
+    }
+    .brnds-flex{
+      flex-direction: column;
+    }
+    
+    
+}
+
+  
+  
+  
+</style>
+
+<!-- Topbar Start -->
+{% comment %} <div class="container-fluid bg-dark text-light px-0 py-1">
+  <div class="row gx-0 d-none d-lg-flex">
+    <div class="col-lg-7 px-5 text-start">
+      <div class="h-100 d-inline-flex align-items-center">
+        <a href="#" class="text-light"></a>
+      </div>
+      <div class="h-100 d-inline-flex align-items-center me-4">
+        <a href="{% url 'dwnld' 1 %}" class="text-light">Downloads</a>
+      </div>
+      <div class="h-100 d-inline-flex align-items-center">
+        <a href="{% url 'aboutus' %}" class="text-light me-4">About OLSI</a>
+      </div>
+    </div>
+    <div class="col-lg-5 px-5 text-end">
+      <div class="h-100 d-inline-flex align-items-center mx-n2">
+        <span></span>
+        <a href="{% url 'contact' %}" class="text-light" style="margin-right: 10px;">Contact Us</a>     
+      </div>
+    </div>
+  </div>
+</div> {% endcomment %}
+
+<div class="nav-scroller bg-dark shadow-sm">
+  <nav class="nav" aria-label="Secondary navigation">
+    <div class="w-50 float-left d-flex">    
+      <a href="{% url 'dwnld' 1 %}" class="nav-link text-light">Downloads</a>
+      {% comment %} <a href="{% url 'aboutus' %}" class="nav-link text-light me-2">About OLSI</a> {% endcomment %}
+    </div>
+    <div class="w-50 float-right text-end">
+      <a href="{% url 'contact' %}" class="nav-link text-light" style="margin-right: 10px;">Contact Us</a>
+    </div>
+  </nav>
+</div>
+
+<!-- Topbar End -->
+
+<!-- Navbar Start -->
+
+<nav class="navbar navbar-expand-lg bg-white navbar-light sticky-top p-0 border-bottom">
+  <a href="{% url 'home' %}" class="navbar-brand d-flex align-items-center px-4 px-lg-5">
+    {% comment %} <img src="{% static 'img/logo_olsi1.png' %}" class="" alt="" style="height: 80px; width: 140px; padding: 10px 0;  " /> {% endcomment %}
+    <h3>DRY NUTS</h3>
+  </a>
+  <button type="button" class="navbar-toggler me-4" data-bs-toggle="collapse" data-bs-target="#navbarCollapse"><span class="navbar-toggler-icon"></span></button>
+  <div class="collapse navbar-collapse" id="navbarCollapse">
+    <div class="navbar-nav ms-auto p-4 p-lg-0">
+      <header class="header">
+        <div class="container">
+          <div class="row">
+            <!-- menu start here -->
+            <div class="">
+              <nav class="menu">
+                <ul class="menu-main">
+                  
+                  <li>
+                    <a style="text-decoration: none;" href="{% url 'home' %}">HOME</a>
+                  </li>
+                  <li class="menu-item-has-children">
+                    <a href="#">PRODUCTS <i class="fa fa-angle-down"></i></a>
+                    <div class="sub-menu mega-menu mega-menu-column-4">
+                      <div class="list-item" style="display: flex;">
+                      {% for categorys in category %}
+                        <div class="nav" style="width: 300px; height: 45%; display:list-item;">
+                          <h4 class="" style="margin-right: 150px;">{{categorys.ctg_Name}}</h4>
+                        <ul style="text-decoration: none; list-style: none; ">
+                          {% for product in categorys.product_db_set.all %}
+                          <li>
+                            <a href="{% url "viewproduct" product.id %}">{{product.PRDT_Title}}</a>
+                          </li>
+                          {% endfor %}
+                        </ul>
+                        </div>
+                        {% endfor %}
+                      </div>
+                    </div>
+                  </li>
+                  {% comment %} <li class="menu-item-has-children">
+                    <a style="text-decoration: none;" href="#">BRANDS <i class="fa fa-angle-down"></i></a>
+                    <div class="sub-menu single-column-menu">
+                      <ul style="text-decoration: none; list-style-type: none;" class="d-flex brnds-flex sub-menu mega-menu">
+
+                        <li style="padding: 10px;">
+                          <a href="{% url 'home' %}#health-care">
+                            <img src="{% static 'img/Wellness-Logo.png' %}" style="height: 60px; width: 60px;" alt="" />
+                          </a>
+                        </li>
+
+                        <li style="padding: 10px;">
+                          <a href="{% url 'home' %}#person-care">
+                            <img src="{% static 'img/prefference.png' %}" style="height: 50px; width: 200px; margin-top: 8px; " alt="" />
+                          </a>
+                        </li>
+
+                        
+                        <li style="padding: 10px;">
+                          <a href="{% url 'home' %}#home-care">
+                            <img src="{% static 'img/WhiteHouseLogo.png' %}" style="height: 50px; width: 160px;" alt="" />
+                          </a>
+                        </li>
+
+                        <li style="padding: 10px;">
+                          <a href="{% url 'home' %}#agriculture">
+                            <img src="{% static 'img/AgrienLog.png' %}" style="height: 50px; width: 170px;" alt="" />
+                          </a>
+                        </li>
+                      </ul>
+                    </div>
+                  </li> {% endcomment %}
+
+
+                  {% comment %} <li class="menu-item-has-children">
+                    <a style="text-decoration: none;" href="#">BRANCHES <i class="fa fa-angle-down"></i></a>
+                    <div class="sub-menu single-column-menu">
+                      <ul style="text-decoration: none; list-style-type: none;" class="d-flex sub-menu mega-menus">
+                        <li style="">
+                          <div class="search-container" style="display:">
+                            <form action="{% url 'branches' %}" method="GET">                              
+                              <li class="menu-item-has-children">
+                              <div class="sub-menu single-column-menu">
+                                <ul style="text-decoration: none; list-style-type: none; display:flex;flex-direction:column;border-bottom:solid 1px black " class="d-flex sub-menu mega-menue">
+                                  {% for i in state %}                                 
+                                  <li style="padding: 10px; width:130px;">
+                                    <a href="{% url 'branch1' i.id %}" style="width:220px;">
+                                      {{i.name}}                                      
+                                    </a>
+                                  </li>{% endfor %}
+                                </ul>
+                              </div>
+                              </li>
+                            </form>
+                          </div>
+                        </li>
+                      </ul>
+                    </div>
+                  </li> {% endcomment %}
+
+                  <li>
+                    <a style="text-decoration: none;" href="{% url 'offers' %}">OFFERS</a>
+                  </li>
+                  {% comment %} <li class="menu-item-has-children">
+                    <a style="text-decoration: none;" href="{% url 'upcoming' %}">UPCOMING LAUNCHES</a>  
+                  </li> {% endcomment %}
+                  <li>
+                    <a style="text-decoration: none;" href="{% url 'gallery' %}">GALLERY</a>
+                  </li>
+                  {% comment %} <li>
+                    <a style="text-decoration: none;" href="{% url 'trainer' %}">TRAININGS</a>
+                  </li> {% endcomment %}
+                  {% comment %} <li>
+                    <a style="text-decoration: none;" href="{% url 'career' %}">CAREER</a>
+                  </li> {% endcomment %}
+
+                  <li>
+                    <a style="text-decoration: none;" href="#">CART</a>
+                  </li>
+
+                {% comment %} <li>
+                  <ul class="navbar-nav">
+                    <li class="nav-item dropdown">
+                      <a class="nav-link dropdown-toggle text-dark position-relative" href="#" id="navbarDropdown" role="button"
+                       data-mdb-toggle="dropdown" aria-expanded="false"> <i class="fas fa-user-circle mx-1" style="font-size: 120%;"></i>  </a>
+                       <!-- Dropdown menu -->
+                       <ul class="dropdown-menu dropdown-menu-end" aria-labelledby="navbarDropdown" style="margin-left: -80px;">
+                          <li>
+                            <a class="dropdown-item" href="{% url 'distributor' %}">Distributor Login</a>
+                          </li>
+          
+                          <li>
+                            <a class="dropdown-item" href="{% url 'otplogin' %}">OTP Login</a>
+                          </li>
+                       </ul>
+                    </li>
+                  </ul>  
+                </li>   {% endcomment %}
+                </ul>
+              </nav>
+            </div>
+          </div>
+        </div>
+      </header>
+    </div>
+    
+  </div>
+</nav>
+
+<!-- Navbar End -->
+
+<!-- Login and Registration -->
+
+<div class="cover_box" target="_blank">
+  <span class="icon-close"><ion-icon name="close-outline" style="color: aliceblue;"></ion-icon></span>
+  <div class="form-box login">
+    <h2>Distributor Login</h2>
+    <form action="#">
+      <div class="input-box">
+        <span class="icon"><ion-icon name="mail-outline"></ion-icon></span>
+        <input type="email" required />
+        <label>Email</label>
+      </div>
+      <div class="input-box">
+        <span class="icon"><ion-icon name="lock-closed-outline"></ion-icon></span>
+        <input type="password" required />
+        <label>Password</label>
+      </div>
+      <div class="remember-forgot">
+        <label><input type="checkbox" />Remmber me</label>
+        <a href="#">Forgot password?</a>
+      </div>
+      <button type="submit" class="btn12">Login</button>
+      <div class="login-register">
+        <p>
+          Don't have an account? <a href="{% url "register" %}" class="register-link">Register</a>
+        </p>
+      </div>
+    </form>
+  </div>
+  <!-- registration -->
+  <div id="reg" class="form-box register">
+    <h2>Register</h2>
+    <form action="#">
+      <div class="input-box">
+        <span class="icon"><ion-icon name="person-outline"></ion-icon></span>
+        <input type="text" required />
+        <label>Username</label>
+      </div>
+      <div class="input-box">
+        <span class="icon"><ion-icon name="mail-outline"></ion-icon></span>
+        <input type="email" required />
+        <label>Email</label>
+      </div>
+      <div class="input-box">
+        <span class="icon"><ion-icon name="lock-closed-outline"></ion-icon></span>
+        <input type="password" required />
+        <label>Password</label>
+      </div>
+      <div class="remember-forgot">
+        <label><input type="checkbox" />Agree to terms & conditions</label>
+        <a href="#">Forgot password?</a>
+      </div>
+      <button type="submit" class="btn12">Register</button>
+      <div class="login-register">
+        <p>
+          Already have an account? <a href="#" class="login-link">Sign In</a>
+        </p>
+      </div>
+    </form>
+  </div> 
+</div>
+
+{% comment %}  {% endcomment %}
+
+
+
+{% comment %}  {% endcomment %}
+
+
+
+<script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+
+<script>
+
+    $(document).ready(function() {
+        // Function to toggle dropdown menu
+        $(".nav-link.dropdown-toggle").click(function() {
+          {% comment %} e.preventDefault();  {% endcomment %}
+            $(this).next(".dropdown-menu").toggle();
+        });
+
+        // Close the dropdown when clicking outside of it
+        $(document).click(function(e) {
+            if (!$(e.target).closest('.nav-item.dropdown').length) {
+                $(".dropdown-menu").hide();
+            }
+        });
+    });
+  
+</script>
+
